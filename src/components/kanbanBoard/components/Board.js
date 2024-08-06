@@ -51,7 +51,7 @@ const onDragEnd = (result, columns, setColumns) => {
     });
   } else {
     const column = columns[source.droppableId];
-    const copiedItems = [...column.items];
+    const copiedItems = [...column?.items];
     const [removed] = copiedItems.splice(source.index, 1);
     copiedItems.splice(destination.index, 0, removed);
     setColumns({
@@ -73,7 +73,7 @@ function Board() {
       try {
         const response = await API.get("/v1/project/2/task");
         console.log(response);
-        const fetchedTasks = response.data.data;
+        const fetchedTasks = response?.data.data;
         setTasks(fetchedTasks);
         setColumns(prevColumns => ({
           ...prevColumns,
